@@ -11,9 +11,9 @@ class Match {
   private int awayScore;
 
   public Match(String homeTeam, String awayTeam) {
-    this.homeTeam = homeTeam;
+    this.homeTeam = homeTeam.isBlank() ? "Home Team" : homeTeam;
     this.homeScore = 0;
-    this.awayTeam = awayTeam;
+    this.awayTeam = awayTeam.isBlank() ? "Away Team" : awayTeam;
     this.awayScore = 0;
   }
 
@@ -25,16 +25,24 @@ class Match {
     return this.awayScore;
   }
 
+  public String getHomeTeam() {
+    return this.homeTeam;
+  }
+
+  public String getAwayTeam() {
+    return this.awayTeam;
+  }
+
   public void updateScore(int homeScore, int awayScore) {
     this.homeScore = Math.max(homeScore, 0);
     this.awayScore = Math.max(awayScore, 0);
   }
 
-  public String toString() {
-    return this.homeTeam + " " + this.homeScore + " - " + this.awayTeam + " " + this.awayScore;
-  }
-
   public int getTotalScore() {
     return this.homeScore + this.awayScore;
+  }
+
+  public String toString() {
+    return this.homeTeam + " " + this.homeScore + " - " + this.awayTeam + " " + this.awayScore;
   }
 }

@@ -42,4 +42,27 @@ class MatchTest {
     assertEquals(11, score);
   }
 
+  @Test
+  void shouldSetZeroWhenMinusScore() {
+    // given
+    Match match = new Match("Ukraine", "China");
+
+    // when
+    match.updateScore(-1,-3);
+
+    // then
+    assertEquals(0, match.getHomeScore());
+    assertEquals(0, match.getAwayScore());
+  }
+
+  @Test
+  void shouldSetNamePlaceholdersWhenEmptyName() {
+    // given - when
+    Match match = new Match("", "");
+
+    // then
+    assertEquals("Home Team", match.getHomeTeam());
+    assertEquals("Away Team", match.getAwayTeam());
+  }
+
 }
