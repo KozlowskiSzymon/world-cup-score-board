@@ -27,7 +27,7 @@ public class ScoreBoard {
   }
 
   public void updateScoreOfMatch(int matchNumber, int homeScore, int awayScore) {
-    if (matchNumber < this.board.size()){
+    if (matchNumber > 0 && matchNumber < this.board.size()){
       this.board.get(matchNumber).updateScore(homeScore, awayScore);
     }
   }
