@@ -58,7 +58,7 @@ class MatchTest {
   @Test
   void shouldSetNamePlaceholdersWhenEmptyName() {
     // given - when
-    Match match = new Match("", "");
+    Match match = new Match("", null);
 
     // then
     assertEquals("Home Team", match.getHomeTeam());

@@ -11,9 +11,9 @@ class Match {
   private int awayScore;
 
   public Match(String homeTeam, String awayTeam) {
-    this.homeTeam = homeTeam.isBlank() ? "Home Team" : homeTeam;
+    this.homeTeam = homeTeam == null || homeTeam.isBlank() ? "Home Team" : homeTeam;
     this.homeScore = 0;
-    this.awayTeam = awayTeam.isBlank() ? "Away Team" : awayTeam;
+    this.awayTeam = awayTeam == null || awayTeam.isBlank() ? "Away Team" : awayTeam;
     this.awayScore = 0;
   }
 
@@ -44,5 +44,9 @@ class Match {
 
   public String toString() {
     return this.homeTeam + " " + this.homeScore + " - " + this.awayTeam + " " + this.awayScore;
+  }
+
+  public boolean isTeamPlaying(String team) {
+    return homeTeam.equals(team) || awayTeam.equals(team);
   }
 }
