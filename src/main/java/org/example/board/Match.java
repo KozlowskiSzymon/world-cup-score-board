@@ -42,10 +42,6 @@ class Match {
     return this.homeScore + this.awayScore;
   }
 
-  public String toString() {
-    return this.homeTeam + " " + this.homeScore + " - " + this.awayTeam + " " + this.awayScore;
-  }
-
   public boolean isTeamPlaying(String team) {
     return homeTeam.equals(team) || awayTeam.equals(team);
   }

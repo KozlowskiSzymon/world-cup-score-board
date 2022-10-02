@@ -96,6 +96,25 @@ class ScoreBoardTest {
         .contains(tuple("France", "Spain", 2 , 1));
   }
   @Test
+  void shouldNotUpdateMatchScoreThatIsNotOnTheBoard() {
+    // given
+    ScoreBoard board = new ScoreBoard();
+    Match match1 = new Match("Poland", "Germany");
+    Match match2 = new Match("France", "Spain");
+    board.addMatch(match1);
+    board.addMatch(match2);
+
+    // when
+    board.updateScoreOfMatch(2, 2, 1);
+
+    // then
+    assertThat(board.getBoard())
+        .hasSize(2)
+        .extracting("homeTeam", "awayTeam", "homeScore", "awayScore")
+        .containsExactly(tuple("Poland", "Germany", 0 , 0),
+            tuple("France", "Spain", 0 , 0));
+  }
+  @Test
   void shouldNotAddTheSameTeamThatIsAlreadyPlaying() {
     // given
     ScoreBoard board = new ScoreBoard();

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class ScoreBoard {
 
   private final List<Match> board = new ArrayList<>();
+
   public void addMatch(Match newMatch) {
     if (isMatchReadyToStart(newMatch)) {
       this.board.add(newMatch);
@@ -26,7 +27,9 @@ public class ScoreBoard {
   }
 
   public void updateScoreOfMatch(int matchNumber, int homeScore, int awayScore) {
-    this.board.get(matchNumber).updateScore(homeScore, awayScore);
+    if (matchNumber < this.board.size()){
+      this.board.get(matchNumber).updateScore(homeScore, awayScore);
+    }
   }
 
   public List<Match> getSummary() {
